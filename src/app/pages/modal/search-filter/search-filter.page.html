@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-button color="primary" (click)="closeModal()">
+            <ion-icon name="close" color="light"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title>
+    	Nouvelle mésure
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+		<ion-card no-margin *ngIf="test == 'nothing'">			  
+				<ion-grid fixed no-padding>
+				  <ion-row> 
+					<ion-col size="12" padding>
+			
+					  <ion-list margin-bottom>
+						<ion-list-header color="light">
+						  <ion-label class="fw700">Form</ion-label>
+						</ion-list-header>
+			
+						<ion-item>
+							<ion-label color="dark" position="stacked">Crénneau:</ion-label>
+							<ion-select [(ngModel)]="vil.creneau">								
+								<ion-select-option  *ngFor = "let vill of libele" value="{{vill.idmesure}}" >{{vill.libelle}}</ion-select-option>
+							</ion-select>
+						</ion-item>
+						<ion-item>
+							<ion-label color="dark" position="stacked">Valeur:</ion-label>
+							<ion-input inputmode="text" placeholder="valeur" value="{{vil.valuer}}" [(ngModel)]="vil.value"></ion-input>
+						</ion-item>
+				
+						<ion-item>
+						  <ion-label color="dark" position="stacked">Insuline:</ion-label>
+						  <ion-input inputmode="text" placeholder="insuline" value="{{vil.insuline1}}" [(ngModel)]="vil.insuline1"></ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-label color="dark" position="stacked">Insuline2:</ion-label>
+							<ion-input inputmode="text" placeholder="insuline2" value="{{vil.insuline2}}" [(ngModel)]="vil.insuline2"></ion-input>
+						</ion-item>
+				
+						<ion-item>
+						  <ion-label color="dark" position="stacked">Pression arterielle:</ion-label>
+						  <ion-input inputmode="text" placeholder="00/00" value="{{vil.pression_arterielle}}" [(ngModel)]="vil.pression_arterielle"></ion-input>
+						</ion-item>
+						
+						<ion-item>
+							<ion-label color="dark" position="stacked">Acétone:</ion-label>
+							<ion-input inputmode="text" placeholder="Acétone" value="{{vil.acetone}}" [(ngModel)]="vil.acetone"></ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-label color="dark" position="stacked">Hba1c:</ion-label>
+							<ion-input inputmode="text" placeholder="Hba1c" value="{{vil.hba1c}}" [(ngModel)]="vil.hba1c"></ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-label color="dark" position="stacked">Notes:</ion-label>
+							<ion-textarea value="{{vil.notes}}"  [(ngModel)]="vil.notes"></ion-textarea>
+						</ion-item>
+						
+					
+				</ion-list>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<ion-button size="large" expand="full" color="primary" (click)="onUpdateData(vil.idjournal)" no-margin >Mettre ajour</ion-button>
+</ion-card>
+
+<ion-card no-margin *ngIf="test == 'elle'">			  
+	<ion-grid fixed no-padding>
+	  <ion-row>
+		<ion-col size="12" padding>
+
+		  <ion-list margin-bottom>
+			<ion-list-header color="light">
+			  <ion-label class="fw700">Form</ion-label>
+			</ion-list-header>
+
+			<ion-item>
+				<ion-label color="dark" position="stacked">Crénneau:</ion-label>
+				<ion-select  [(ngModel)]="newMesure.creneau">								
+					<ion-select-option  *ngFor = "let vill of libele" value="{{vill.idmesure}}">{{vill.libelle}}</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label color="dark" position="stacked">Valeur:</ion-label>
+				<ion-input inputmode="text" placeholder="valeur" [(ngModel)]="newMesure.valuer"></ion-input>
+			  </ion-item>
+	
+			<ion-item>
+			  <ion-label color="dark" position="stacked">Insuline:</ion-label>
+			  <ion-input inputmode="text" placeholder="insuline" [(ngModel)]="newMesure.insuline1"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label color="dark" position="stacked">Insuline2:</ion-label>
+				<ion-input inputmode="text" placeholder="insuline2" [(ngModel)]="newMesure.insuline2" ></ion-input>
+			</ion-item>
+	
+			<ion-item>
+			  <ion-label color="dark" position="stacked">Pression arterielle:</ion-label>
+			  <ion-input inputmode="text" placeholder="00/00" [(ngModel)]="newMesure.pression_arterielle"></ion-input>
+			</ion-item>
+			
+			<ion-item>
+				<ion-label color="dark" position="stacked">Acétone:</ion-label>
+				<ion-input inputmode="text" placeholder="Acétone" [(ngModel)]="newMesure.acetone"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label color="dark" position="stacked">Hba1c:</ion-label>
+				<ion-input inputmode="text" placeholder="Hba1c" [(ngModel)]="newMesure.hba1c"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label color="dark" position="stacked">Notes:</ion-label>
+				<ion-textarea [(ngModel)]="newMesure.notes"></ion-textarea>
+			</ion-item>
+			
+		
+	</ion-list>
+</ion-col>
+</ion-row>
+</ion-grid>
+<ion-button size="large" expand="full" color="primary" (click)="onSaveMesure()" no-margin >Sauver</ion-button>
+</ion-card>
+</ion-content>

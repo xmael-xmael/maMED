@@ -1,0 +1,65 @@
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="theme-bg"></div>
+  <div class="auth-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <h4 no-margin>
+        <ion-text color="secondary" class="fw700">
+          maMED.care
+        </ion-text>
+      </h4>
+    </div>
+
+    <!-- Login form -->
+    <form  class="list-form">
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="mail" item-start></ion-icon>
+          Email
+        </ion-label>
+        <ion-input  type="email" [(ngModel)]="logins.email" name = "email"></ion-input>
+      </ion-item>
+
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="lock" item-start></ion-icon>
+          Password
+        </ion-label>
+        <ion-input type="password"  [(ngModel)]="logins.pass" name = "mot_de_passe" ></ion-input>
+      </ion-item>
+      
+    <p text-right tappable (click)="forgotPass()" class="paz">
+        <ion-text color="secondary">
+          <strong>Forgot Pass?</strong>
+        </ion-text>
+    </p>
+      
+    <div>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToHome()" tappable>
+        <ion-icon name="log-in"></ion-icon>
+        Signin
+      </ion-button>
+    </div>
+    </form>
+
+    <p *ngIf = "catrine != 'clara' || errs != ''">
+      <ion-text color="secondary">
+        <strong>{{catrine}}{{errs}}</strong>
+      </ion-text>
+    </p>
+
+
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span  class="paz" tappable>
+        <ion-text color="secondary">
+          Nouveau? <strong>Sign Up</strong>
+        </ion-text>
+      </span>
+    </div>
+
+  </div>
+</ion-content>

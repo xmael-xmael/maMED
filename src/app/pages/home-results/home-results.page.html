@@ -1,0 +1,166 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+        <ion-text color="light">
+          <ion-text color="light" class="fw700">maMED</ion-text>
+        </ion-text>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button size="small" shape="round" color="medium" (click)="notifications()">
+          <ion-icon name="mail-unread"></ion-icon>
+        <ion-badge color="dark" slot="end">2</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  <ion-card no-margin class="no-radius">
+    <ion-item lines="none" color="medium">
+      <ion-label>
+        <h2 no-margin class="fw500 no-margin">
+          <ion-text color="dark">maMED-Journal</ion-text>
+        </h2>
+
+      </ion-label>
+      <ion-button shape="round" fill="outline" size="small" color="primary" (click)="onShow(Voir)"> {{Voir}}
+       
+        <ion-icon name="locate"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="showt == 'clara'">
+      <ion-card-header color="primary">
+      Mes informations
+      </ion-card-header>
+        
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Sexe:</ion-label>
+          <ion-label slot="end">{{menu.sexe}}</ion-label>
+      </ion-item>
+      
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Naissance</ion-label>
+          <ion-label slot="end">{{menu.datenaiss}}</ion-label>
+      </ion-item>
+      
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Adresse</ion-label>
+          <ion-label slot="end">{{menu.adresse}}</ion-label>
+      </ion-item>
+      
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Telephone</ion-label>
+          <ion-label slot="end">{{menu.tel}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Télephone1</ion-label>
+          <ion-label slot="end">{{menu.tel2}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Email</ion-label>
+          <ion-label slot="end">{{menu.email}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Type de diabète</ion-label>
+          <ion-label slot="end">{{menu.type}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Taille(cm):</ion-label>
+          <ion-label slot="end">{{menu.taille}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Poids(kg):</ion-label>
+          <ion-label slot="end">{{menu.poids}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;IMC:</ion-label>
+          <ion-label slot="end">{{menu.imc}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Interpretation:</ion-label>
+          <ion-label slot="end">{{menu.interpretation}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;Urgence:</ion-label>
+          <ion-label slot="end">{{menu.nom_contact_urgence}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;tel. Urgence:</ion-label>
+          <ion-label slot="end">{{menu.telephone_contact_urgence}}</ion-label>
+      </ion-item>
+      
+           
+        <div style="text-align: center">
+          <ion-button shape="round"  color="secondary" (click)="onShow('Cacher mes infos')">Cacher </ion-button>
+          <ion-button  shape="round"  color="warning" (click)="goToEditProgile()"> Edit </ion-button>
+          <!-- <button ion-button outline item-end icon-start style="align-self: end; " class="round">Mesure</button> -->
+        </div>
+    </ion-card>
+
+
+
+  <div *ngIf = "menu.approbation == 'Nok' && foletia == 'papa'">
+    <ion-card class="bg-white" *ngFor = "let vil of menu1">
+      <h5 style="text-align: center">{{vil.medeciniNom}}&nbsp;&nbsp;{{vil.medeciniPrenom}}</h5>
+      <p style="text-align: center">({{vil.libelle}},&nbsp;&nbsp;{{vil.anciennete}} ans d'expériences)</p>
+      <div style="text-align: center">
+        <ion-button shape="round"  color="secondary" (click)="onStopSuivis('approuver.php', vil.idphm, vil.idmedecin)">Approuver </ion-button>
+        <ion-button  shape="round"  color="warning" (click)="onStopSuivis('suprimer.php', vil.idphm, vil.idmedecin)"> Suprimer </ion-button>
+        <!-- <button ion-button outline item-end icon-start style="align-self: end; " class="round">Mesure</button> -->
+      </div>
+    </ion-card>
+  </div>
+  <div  *ngIf = "menu.approbation == 'ok' && foletia == 'papa'">
+
+      <ion-card class="bg-white" >
+        <ion-card-header color="primary">
+            Medecin traitant
+        </ion-card-header>
+        <h5 style="text-align: center">{{menu.medeciniNom}}&nbsp;&nbsp;{{menu.medeciniPrenom}}</h5>
+        <p style="text-align: center">({{menu.libelle}},&nbsp;&nbsp;{{menu.anciennete}} ans d'expériences)</p>
+        <ion-button expand="full" color="dark" (click)="onStopSuivis('arreterSuivis.php', ' ', ' ')" no-margin>
+            Arreter le suivis
+        </ion-button>
+      </ion-card>
+  </div>
+
+  <ion-list no-border>
+      <ion-list-header>
+        <ion-text color="dark">
+          <h5>Rappels</h5>
+        </ion-text>
+      </ion-list-header>
+      <ion-item>
+          <ion-icon name="notifications" slot="start" color="primary"></ion-icon>
+          <ion-label class="label" color="primary"> Rappels controle apres repas </ion-label>
+          <ion-toggle [(ngModel)]="rapelRepas" (ionChange)="onSave()" checked="true"></ion-toggle>
+      </ion-item>
+      <div *ngIf="clara == true">
+          <ion-item>
+              <ion-label>Définir l'heure</ion-label>
+              <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" [(ngModel)]="repas" (ionChange)="saveHours()"></ion-datetime>
+            </ion-item>
+      </div>
+      <ion-item>
+          <ion-icon name="notifications" slot="start" color="primary"></ion-icon>
+          <ion-label class="label" color="primary"> Alarme préventive hypoglycémie  </ion-label>
+          <ion-toggle [(ngModel)]="rapelHypo" (ionChange)="onSave1()" checked="true"></ion-toggle>
+      </ion-item>
+      <div  *ngIf="clara1 == true">
+          <ion-item>
+              <ion-label>Définir l'heure</ion-label>
+              <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" [(ngModel)]="preventive" (ionChange)="onSaveHours()"></ion-datetime>
+            </ion-item>
+      </div>
+    
+    </ion-list>
+  
+  <popmenu></popmenu>
+</ion-content>
+  

@@ -1,0 +1,73 @@
+<!-- /**
+ * Chatter - Chat themes Ionic 4 (https://www.enappd.com)
+ *
+ * Copyright © 2018-present Enappd. All rights reserved.
+ *
+ * This source code is licensed as per the terms found in the
+ * LICENSE.md file in the root directory of this source .
+ */ -->
+
+ <ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="title-block">
+        <ion-icon name="chatboxes" color="d3blue" class="title-icon"></ion-icon>
+        <ion-text color="d3blue" class="title-text">Messages</ion-text>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding-vertical fullscreen>
+    <div id="chat-parent" class="bg-image" [ngClass]="{ 'bg-image-X': phone_model=='iPhone X'}">
+      <div id="chat-container">
+        <ion-row *ngFor="let conv of menu1; let i = index;" class="full no-padding">
+          <ion-col class="no-padding chat-row" [ngClass]="{ 'reverse': conv.expediteur=='0'}">
+            <div class="avatar-parent" *ngIf="conv.expediteur=='1'">
+              <div class="avatar-border"></div>
+              <img [src]="conv.phott" class="avatar">
+            </div>
+            <div class="avatar-parent" *ngIf="conv.expediteur=='0'">
+                <div class="avatar-border"></div>
+                <img [src]="urlImage" class="avatar">
+            </div>
+            <div [ngClass]="{ 'name-row-parent-right': conv.expediteur=='0','name-row-parent-left': conv.expediteur=='1'}">
+              <div class="no-padding" [ngClass]="{ 'name-row-right': conv.expediteur=='0','name-row-left': conv.expediteur=='1'}">
+                {{conv.expediteur == '0' ? 'Vous': 'Votre docteur'}}
+                <div [ngClass]="{ 'timer-right': conv.expediteur=='0','timer-left': conv.expediteur=='1'}">{{conv.date_save}}
+                  <ion-icon *ngIf="conv.expediteur=='0'" name="checkmark" [color]="conv.expediteur=='1' ? 'd3green': 'light'"
+                    class="first-tick"></ion-icon>
+                  <ion-icon *ngIf="conv.expediteur=='0'" name="checkmark" [color]="conv.expediteur=='1' ? 'd3green': 'light'"
+                    class="second-tick"></ion-icon>
+                </div>
+                <div [ngClass]="{ 'reverse-arc-right': conv.expediteur=='0','reverse-arc-left': conv.expediteur=='1'}">
+                  <div [ngClass]="{ 'reverse-arc-color-right': conv.expediteur=='0','reverse-arc-color-left': conv.expediteur=='1'}"></div>
+                </div>
+              </div>
+              <div class="no-padding" [ngClass]="{ 'message-row-right': conv.expediteur=='0','message-row-left': conv.expediteur=='1'}">
+                <ion-text no-margin class="text" required>{{conv.message}}</ion-text>
+              </div>
+            </div>
+  
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </ion-content>
+<ion-footer translucent [ngClass]="{ 'custom-footer': phone_model=='iPhone X'}">
+  <ion-row class="input-position" [ngClass]="{ 'custom-footer-row': phone_model=='iPhone X'}">
+    <ion-col size="9">
+      <ion-input class="input restrict" type="text" placeholder="Entrez votre message" [(ngModel)]="new.input" padding-start></ion-input>
+    </ion-col>
+    <ion-col size="3">
+      <ion-button shape="round" class="send-button" color="primary" (click)="send()">
+        <ion-text color="light">SEND</ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

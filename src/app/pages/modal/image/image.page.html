@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button size="small" shape="round" (click)="closeModal()" color="tertiary">
+        <ion-icon slot="start" name="close"></ion-icon> Close
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+        Toutes Mes mesures
+      </ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="dark">
+      <ion-searchbar [(ngModel)]="search" (keyup)="getMesure()"></ion-searchbar>
+      <ion-buttons slot="end">
+        <ion-button size="small" shape="round" color="medium" >
+          Chercher
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="bg-white" *ngFor = "let vil of menu">
+        <h5 style="text-align: center">{{vil.libelle}}</h5>
+        
+            <ion-item>
+                <ion-label>Glycémie</ion-label>
+                <ion-badge slot="end">{{vil.valeur}}</ion-badge>
+            </ion-item>
+            
+            <ion-item>
+                <ion-label>Insuline</ion-label>
+                <ion-badge slot="end">{{vil.insuline}}</ion-badge>
+            </ion-item>
+            
+            <ion-item>
+                <ion-label>Acétone</ion-label>
+                <ion-badge slot="end">{{vil.acetone}}</ion-badge>
+            </ion-item>
+            
+            <ion-item>
+                <ion-label>Pression arterielle</ion-label>
+                <ion-badge slot="end">{{vil.pression_arterielle}}</ion-badge>
+            </ion-item>
+            <ion-item>
+                <ion-label>Hba1c</ion-label> 
+                <ion-badge slot="end">{{vil.hba1c}}</ion-badge>
+            </ion-item>
+            <ion-item>
+                <ion-label>Notes</ion-label>
+                <ion-badge slot="end" >{{vil.notes}}</ion-badge>
+            </ion-item>
+            <ion-item>
+                <ion-label>Date</ion-label>
+                <ion-badge slot="end">{{vil.date}}</ion-badge>
+            </ion-item>
+        <div style="text-align: center">
+          <ion-button shape="round"  color="secondary" (click)="searchFilter(vil)">Edit </ion-button>
+          <ion-button  shape="round"  color="warning" (click)="onDelete(vil.idjournal)"> Suprimer </ion-button>
+          <!-- <button ion-button outline item-end icon-start style="align-self: end; " class="round">Mesure</button> -->
+        </div>
+      </ion-card>
+</ion-content>

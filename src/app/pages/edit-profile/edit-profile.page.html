@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile">
+  <ion-card no-margin>
+    <ion-card-content class="bg-profile">
+      <img src="{{picture}}">
+      <h1 class="fw500">{{menu.nom}}&nbsp;&nbsp;{{menu.prenom}}</h1>
+      <h2 color="light" margin-bottom>{{menu.role}}</h2>
+      <ion-button icon-left color="secondary">
+        <ion-icon name="photos"></ion-icon> 
+        Edit
+      </ion-button>
+    </ion-card-content>
+  
+    <ion-grid fixed no-padding>
+      <ion-row>
+        <ion-col size="12" padding>
+
+          <ion-list margin-bottom>
+            <ion-list-header color="light">
+              <ion-label class="fw700">Form</ion-label>
+            </ion-list-header>
+
+            <ion-item>
+              <ion-label color="dark" position="stacked">Nom:</ion-label>
+              <ion-input inputmode="text" placeholder="Ex..: Joe Doe" value="{{menu.nom}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="dark" position="stacked">Prenom:</ion-label>
+                <ion-input inputmode="text" placeholder="Ex..: Joe Doe" value="{{menu.prenom}}"></ion-input>
+              </ion-item>
+    
+            <ion-item>
+              <ion-label color="dark" position="stacked">Naissance:</ion-label>
+              <ion-input inputmode="date" placeholder="Ex.: joe@doe.com" value="{{menu.datenaiss}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="dark" position="stacked">Sexe:</ion-label>
+                <ion-select>
+                    <ion-select-option value="Masculin" >Masculin</ion-select-option>
+                    <ion-select-option value="Féminin"  >Féminin</ion-select-option>
+                  </ion-select>
+              </ion-item>
+    
+            <ion-item>
+              <ion-label color="dark" position="stacked">Adresse:</ion-label>
+              <ion-input inputmode="text" placeholder="Ex.: Abey Road 5" value="{{menu.adresse}}"></ion-input>
+            </ion-item>
+            
+            <ion-item>
+                <ion-label color="dark" position="stacked">Téléphone1:</ion-label>
+                <ion-input inputmode="text" placeholder="Ex.: Abey Road 5" value="{{menu.tel}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="dark" position="stacked">Téléphone2:</ion-label>
+                <ion-input inputmode="text" placeholder="Ex.: Abey Road 5" value="{{menu.tel2}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="dark" position="stacked">Type de diabète:</ion-label>
+                <ion-input inputmode="text" placeholder="Ex.: Abey Road 5" value="{{menu.type}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="dark" position="stacked">Poids(Kg):</ion-label>
+                <ion-input inputmode="text" placeholder="Ex.: Abey Road 5" value="{{menu.poids}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="dark" position="stacked">Taille(cm):</ion-label>
+                <ion-input inputmode="text" placeholder="Ex.: Abey Road 5" value="{{menu.taille}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="dark" position="stacked">Personne d'Urgence:</ion-label>
+                <ion-input inputmode="text" placeholder="Ex.: Abey Road 5" value="{{menu.nom_contact_urgence}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="dark" position="stacked">Téléphone d'Urgence:</ion-label>
+                <ion-input inputmode="text" placeholder="Ex.: Abey Road 5" value="{{menu.telephone_contact_urgence}}"></ion-input>
+            </ion-item>
+    
+          
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    <ion-button size="large" expand="full" color="dark" (click)="sendData()" no-margin>Update</ion-button>
+  </ion-card>
+</ion-content>

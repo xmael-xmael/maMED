@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Prefernces</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item class="bg-profile">
+    <ion-avatar slot="start">
+      <img src="{{urlPicture}}" class="user-avatar">
+    </ion-avatar>
+    <ion-label>
+      <ion-text color="light">
+        <h2>
+          <strong>{{name}}</strong>
+        </h2>
+      </ion-text>
+      <ion-text color="tertiary">
+        <h3>
+          {{email}}
+        </h3>
+      </ion-text>
+      <ion-button icon-left size="small" shape="round" color="dark" (click)="editProfile()">
+        <ion-icon name="contact"></ion-icon>
+        Edit profile
+      </ion-button>
+      <ion-button icon-left size="small" shape="round" color="secondary" (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+        logout
+      </ion-button>
+    </ion-label>
+  </ion-item>
+
+  <ion-list no-border>
+    <ion-list-header>
+      <ion-text color="dark">
+        <h5>Activer / desactiver Alarme</h5>
+      </ion-text>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="notifications" slot="start" color="primary"></ion-icon>
+      <ion-label color="primary">Alarme préventive hypoglycémie</ion-label>
+      <ion-checkbox color="primary"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="notifications" slot="start" color="primary"></ion-icon>
+      <ion-label color="primary">Rappels controle après le repas</ion-label>
+      <ion-checkbox color="primary"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+ 
+  <ion-list>
+      <ion-radio-group>
+        <ion-list-header>
+            <ion-text color="dark">
+                <h5>Unités</h5>
+              </ion-text>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label> g/l</ion-label>
+          <ion-radio slot="end" value="biff" checked></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>mg/dl</ion-label>
+          <ion-radio slot="end" value="griff"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>mmol/l</ion-label>
+          <ion-radio slot="end" value="buford"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+  
+
+    <ion-list>
+        <ion-list-header>
+        <ion-text color="dark">
+          <h5>Mesures</h5>
+        </ion-text>
+      </ion-list-header>
+      <ion-item>
+        
+        <ion-label color="primary">Au lever</ion-label>
+        <ion-checkbox color="primary"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        
+        <ion-label color="primary">Avant le petit dejeuner</ion-label>
+        <ion-checkbox color="primary"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        
+        <ion-label color="primary">Apres le petit dejeuner</ion-label>
+        <ion-checkbox color="primary"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        
+        <ion-label color="primary">Avant le dejeuner</ion-label>
+        <ion-checkbox color="primary"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        
+        <ion-label color="primary">Après le dejeuner</ion-label>
+        <ion-checkbox color="primary"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        
+        <ion-label color="primary">Avant le diner</ion-label>
+        <ion-checkbox color="primary"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        
+        <ion-label color="primary">Après le diner</ion-label>
+        <ion-checkbox color="primary"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+          
+          <ion-label color="primary">Après le diner</ion-label>
+          <ion-checkbox color="primary"></ion-checkbox>
+      </ion-item>
+    
+    </ion-list>
+    <ion-item>
+        <ion-button color="primary" (click)="presentAlertPrompt()">Edit password</ion-button>
+    </ion-item>
+
+ 
+</ion-content>
